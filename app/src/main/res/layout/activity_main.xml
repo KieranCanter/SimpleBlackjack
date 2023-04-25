@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <!--Blackjack Label-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:textSize="90dp"
+        android:text="Blackjack"
+        android:gravity="center"
+        />
+
+    <!--Main Menu Label-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:textSize="40dp"
+        android:text="Main Menu"
+        android:gravity="center"
+        />
+
+    <!--Field for user to enter email address-->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:textSize="20dp"
+        android:hint="Enter Email"
+        android:gravity="center"
+        />
+
+    <!--Button to go to the financial screen-->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:text="WITHDRAW/DEPOSIT"
+        />
+
+    <!--Button to go to the game-->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:text="PLAY NOW"
+        />
+
+    <!--TextView for advertisement-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:text="Advertisement HERE"
+        android:gravity="center"
+        android:textSize="20dp"
+        />
+
+</LinearLayout>

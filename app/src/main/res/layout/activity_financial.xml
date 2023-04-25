@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <!--Label-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textSize="40dp"
+        android:text="Current Balance: "
+        android:gravity="center"
+        />
+    
+    <!--Displays user's current balance-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textSize="20dp"
+        android:text="PUT BALANCE HERE"
+        android:gravity="center"
+        />
+
+    <!--Box for user to enter their desired amount-->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textSize="20dp"
+        android:hint="Enter Amount"
+        android:gravity="center"
+        />
+
+    <!--Button to withdraw-->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textSize="20dp"
+        android:text="WITHDRAW"
+        android:gravity="center"
+        />
+
+    <!--Button to deposit-->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textSize="20dp"
+        android:text="DEPOSIT"
+        android:gravity="center"
+        />
+
+    <!--Button to return to main menu-->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textSize="20dp"
+        android:text="RETURN TO MAIN MENU"
+        android:gravity="center"
+        />
+
+</LinearLayout>
