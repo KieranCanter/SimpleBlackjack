@@ -4,7 +4,7 @@ class Deck {
 
     private var deck : ArrayList<Card>
     private var suits : Array<String> = arrayOf("Clubs", "Spades", "Hearts", "Diamonds")
-    private var values : Array<Int> = arrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13)
+    private var values : Array<String> = arrayOf("Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King")
 
     constructor() {
         deck = ArrayList<Card>()

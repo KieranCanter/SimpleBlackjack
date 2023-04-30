@@ -3,9 +3,9 @@ package com.example.groupproject
 class Card {
 
     private var suit : String
-    private var value : Int
+    private var value : String
 
-    constructor(suit : String, value : Int) {
+    constructor(suit : String, value : String) {
         this.suit = suit
         this.value = value
     }
@@ -14,7 +14,7 @@ class Card {
         return this.suit
     }
 
-    fun getValue() : Int {
+    fun getValue() : String {
         return this.value
     }
 }
