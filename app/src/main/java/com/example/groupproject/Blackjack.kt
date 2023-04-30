@@ -6,9 +6,11 @@ class Blackjack {
     private lateinit var playerHand : ArrayList<Card>
     private lateinit var dealerHand : ArrayList<Card>
 
-    constructor() {
-
+    constructor(deck: Deck) {
+        this.deck = deck
     }
+
+
 
 
 }
