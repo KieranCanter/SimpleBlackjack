@@ -7,7 +7,6 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <!--Blackjack Label-->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -17,18 +16,17 @@
         android:gravity="center"
         />
 
-    <!--Main Menu Label-->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3"
-        android:textSize="40dp"
+        android:textSize="20dp"
         android:text="Main Menu"
         android:gravity="center"
         />
 
-    <!--Field for user to enter email address-->
     <EditText
+        android:id="@+id/input_email"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3"
@@ -37,7 +35,16 @@
         android:gravity="center"
         />
 
-    <!--Button to go to the financial screen-->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:textSize="20dp"
+        android:text="Save Email"
+        android:gravity="center"
+        android:onClick="saveEmail"
+        />
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -45,9 +52,9 @@
         android:gravity="center"
         android:textSize="20dp"
         android:text="WITHDRAW/DEPOSIT"
+        android:onClick="toFinancial"
         />
 
-    <!--Button to go to the game-->
     <Button
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -55,16 +62,16 @@
         android:gravity="center"
         android:textSize="20dp"
         android:text="PLAY NOW"
+        android:onClick="toGame"
         />
 
-    <!--TextView for advertisement-->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3"
-        android:text="Advertisement HERE"
-        android:gravity="center"
-        android:textSize="20dp"
+        android:orientation="vertical"
+        android:background="#0000"
+        android:id="@+id/ad_view"
         />
 
 </LinearLayout>
