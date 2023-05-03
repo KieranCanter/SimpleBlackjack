@@ -10,11 +10,15 @@ class Blackjack {
     private lateinit var playerHand : ArrayList<Card>
     private lateinit var dealerHand : ArrayList<Card>
 
-    constructor(deck: Deck) {
-        this.deck = deck
+    constructor() {
+        this.deck = Deck()
+        this.deck.shuffleDeck()
+        this.playerHand = ArrayList<Card>()
+        this.dealerHand = ArrayList<Card>()
         dealerHit()
         playerHit()
     }
+
     fun playerHit(){
         playerHand.add(deck.dealOneCard())
         playerSum = valueCount(playerHand, true)
@@ -76,12 +80,5 @@ class Blackjack {
         }
         return false
     }
-
-
-
-
-
-
-
-
+    
 }
