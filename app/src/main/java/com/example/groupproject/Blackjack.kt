@@ -31,7 +31,7 @@ class Blackjack {
     }
     fun dealerHit(){
         dealerHand.add(deck.dealOneCard())
-        dealerSum = valueCount(dealerHand, true)
+        dealerSum = valueCount(dealerHand, false)
         //Over 21 check with aces
         for(i in 0..dealerAces){
             if (dealerSum > 21){
@@ -67,6 +67,9 @@ class Blackjack {
             }
         }
     }
+
+    //Return false = Dealer will stop playing
+    //Return true = Dealer wants to keep playing
     fun dealerChoice(): Boolean {
         if(playerSum > 21) return false
         //Draw Case
@@ -80,5 +83,12 @@ class Blackjack {
         }
         return false
     }
-    
+
+    fun didPlayerWin(): String {
+        if(playerSum == dealerSum) return "draw"
+        if(playerSum > 21) return "loss"
+        if(dealerSum > 21) return "win"
+        if(playerSum > dealerSum) return "win"
+        else return "loss"
+    }
 }
