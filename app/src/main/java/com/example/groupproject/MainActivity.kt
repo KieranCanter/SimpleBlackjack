@@ -35,8 +35,8 @@ class MainActivity : AppCompatActivity() {
         var adUnitId : String = "ca-app-pub-3940256099942544/6300978111"
         adView.adUnitId = adUnitId
         var builder : AdRequest.Builder = AdRequest.Builder()
-        builder.addKeyword("workout")
-        builder.addKeyword("fitness")
+        builder.addKeyword("poker")
+        builder.addKeyword("blackjack")
         var request : AdRequest = builder.build()
         adLayout = findViewById(R.id.ad_view)
         adLayout.addView(adView)
@@ -59,6 +59,7 @@ class MainActivity : AppCompatActivity() {
             return
         } else {
             var myIntent : Intent = Intent(this, FinancialActivity::class.java)
+            myIntent.putExtra("Email", email)
             this.startActivity(myIntent)
         }
     }
@@ -71,6 +72,7 @@ class MainActivity : AppCompatActivity() {
             return
         } else {
             var myIntent : Intent = Intent(this, GameActivity::class.java)
+            myIntent.putExtra("Email", email)
             this.startActivity(myIntent)
         }
     }
