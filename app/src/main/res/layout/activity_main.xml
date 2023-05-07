@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="8"
+        android:layout_weight="4"
         android:textSize="90dp"
         android:text="Blackjack"
         android:gravity="center"
@@ -19,31 +19,49 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3"
+        android:layout_weight="1"
         android:textSize="20dp"
         android:text="Main Menu"
         android:gravity="center"
         />
 
-    <EditText
-        android:id="@+id/input_email"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3"
-        android:textSize="20dp"
-        android:hint="Enter Email"
-        android:gravity="center"
-        />
+        android:orientation="horizontal"
+        android:gravity="center">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3"
-        android:textSize="20dp"
-        android:text="Save Email"
-        android:gravity="center"
-        android:onClick="saveEmail"
-        />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center">
+            <EditText
+                android:layout_height="100dp"
+                android:layout_width="150dp"
+                android:hint="Enter Email"
+                android:textSize="20dp"
+                android:id="@+id/input_email"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center">
+            <Button
+                android:layout_height="100dp"
+                android:layout_width="150dp"
+                android:text="SAVE EMAIL"
+                android:textSize="20dp"
+                android:onClick="saveEmail"
+                />
+        </LinearLayout>
+    </LinearLayout>
 
     <Button
         android:layout_width="match_parent"
