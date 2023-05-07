@@ -1,10 +1,14 @@
 package com.example.groupproject
 
+import android.icu.text.NumberFormat
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.*
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import java.util.*
 import kotlin.math.roundToInt
 
 class FinancialActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
@@ -24,15 +28,16 @@ class FinancialActivity : AppCompatActivity(), AdapterView.OnItemSelectedListene
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_financial)
 
-        this.email = getIntent().getExtras()?.getString("Email")!!
+        this.email = intent.extras?.getString("Email")!!
 
         this.options = findViewById<Spinner>(R.id.options)
         var categories : ArrayList<String> = ArrayList<String>()
         categories.add("WITHDRAW")
         categories.add("DEPOSIT")
-        var dataAdapter : ArrayAdapter<String> = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories)
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
-        options.setAdapter(dataAdapter)
+
+        var dataAdapter : ArrayAdapter<String> = ArrayAdapter<String>(this, R.layout.spinner_list, categories)
+        dataAdapter.setDropDownViewResource(R.layout.spinner_list_dropdown)
+        options.adapter = dataAdapter
         options.onItemSelectedListener = this
 
         transactionAmountET = findViewById<EditText>(R.id.enter_amount)
@@ -44,7 +49,6 @@ class FinancialActivity : AppCompatActivity(), AdapterView.OnItemSelectedListene
         Log.w("MainActivity", "Current Balance is " + currentBalance)
         Log.w("MainActivity", "Last Transaction Amount Was " + transactionAmount)
     }
-
     fun performTransaction(v : View) {
         if (transactionAmount <= 0.0) {
             var toast : Toast = Toast.makeText(this, "INPUT AMOUNT", Toast.LENGTH_LONG)
@@ -56,6 +60,7 @@ class FinancialActivity : AppCompatActivity(), AdapterView.OnItemSelectedListene
             if (currentBalance >= transactionAmount) {
                 currentBalance -= transactionAmount
                 sendReceipt()
+                Toast.makeText(this, "$" + NumberFormat.getInstance().format(transactionAmount) + " WITHDRAWN", Toast.LENGTH_LONG).show()
             } else {
                 var toast : Toast = Toast.makeText(this, "INSUFFICIENT FUNDS", Toast.LENGTH_LONG)
                 toast.show()
@@ -63,6 +68,7 @@ class FinancialActivity : AppCompatActivity(), AdapterView.OnItemSelectedListene
         } else if (depositSelected) {
             currentBalance += transactionAmount
             sendReceipt()
+            Toast.makeText(this, "$" + NumberFormat.getInstance().format(transactionAmount) + " DEPOSITED", Toast.LENGTH_LONG).show()
         } else {
             Log.w("MainAcitivity", "UH OH")
         }
@@ -76,6 +82,7 @@ class FinancialActivity : AppCompatActivity(), AdapterView.OnItemSelectedListene
             return
         } else {
             transactionAmount = desiredAmount.toDouble()
+            Toast.makeText(this, "AMOUNT CONFIRMED", Toast.LENGTH_LONG).show()
         }
     }
 

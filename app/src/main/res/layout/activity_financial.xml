@@ -2,91 +2,97 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/dark_grey"
     android:orientation="vertical" >
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_height="150dp"
         android:textSize="20dp"
         android:text="Current Balance: \n$0.00"
+        android:textColor="@color/light_grey"
         android:gravity="center"
         android:id="@+id/current_balance"
         />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_height="150dp"
         android:orientation="horizontal"
         android:gravity="center">
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:gravity="center">
             <EditText
                 android:layout_height="100dp"
                 android:layout_width="150dp"
                 android:hint="Enter Amount"
                 android:textSize="20dp"
                 android:id="@+id/enter_amount"
+                android:textColorHint="@color/light_grey"
+                android:backgroundTint="@color/light_grey"
+                android:textColor="@color/light_grey"
                 android:inputType="numberDecimal"
+                android:layout_marginEnd="10dp"
                 />
-        </LinearLayout>
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:gravity="center">
             <Button
                 android:layout_height="100dp"
                 android:layout_width="150dp"
                 android:text="CONFIRM AMOUNT"
+                android:backgroundTint="@color/red_400"
+                android:textColor="@color/dark_grey"
                 android:textSize="20dp"
+                android:textStyle="bold"
                 android:onClick="confirmAmount"
+                android:layout_marginStart="10dp"
                 />
-        </LinearLayout>
+
     </LinearLayout>
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.75"
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:gravity="start|center"
+        android:text="Choose Transaction Type:"
+        android:textColor="@color/light_grey"
         android:textSize="20dp"
-        android:text="Choose Transaction Type"
-        android:gravity="center"
+        android:layout_marginTop="10dp"
         />
 
     <Spinner
         android:id="@+id/options"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1.25"
-        android:gravity="center"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/light_grey"
+        android:entries="@array/spinner_items"
+        android:gravity="start|center"
         />
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:backgroundTint="@color/red_400"
+        android:textColor="@color/dark_grey"
         android:textSize="20dp"
+        android:textStyle="bold"
         android:text="Perform Transaction"
-        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
         android:onClick="performTransaction"
+        android:layout_marginTop="50dp"
         />
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:backgroundTint="@color/red_400"
+        android:textColor="@color/dark_grey"
         android:textSize="20dp"
+        android:textStyle="bold"
         android:text="Return to Main Menu"
-        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_marginBottom="50dp"
         android:onClick="returnToMainMenu"
         />
 
