@@ -1,6 +1,6 @@
 package com.example.groupproject
 
-class Blackjack() {
+class Blackjack {
 
     private var deck : Deck
     private var playerAces : Int = 0
@@ -13,8 +13,8 @@ class Blackjack() {
     init {
         this.deck = Deck()
         this.deck.shuffleDeck()
-        this.playerHand = ArrayList<Card>()
-        this.dealerHand = ArrayList<Card>()
+        this.playerHand = ArrayList()
+        this.dealerHand = ArrayList()
         dealerHit()
         playerHit()
     }
@@ -40,7 +40,7 @@ class Blackjack() {
         }
     }
 
-    fun valueCount(hand: ArrayList<Card>, player: Boolean): Int{
+    private fun valueCount(hand: ArrayList<Card>, player: Boolean): Int{
         var sum = 0
         for (card in hand) {
             if(card.getValue() == "Ace"){
@@ -52,7 +52,7 @@ class Blackjack() {
         return sum
     }
 
-    fun toPoint(value: String): Int{
+    private fun toPoint(value: String): Int{
         return when (value) {
             "Two" -> 2
             "Three" -> 3
@@ -89,7 +89,7 @@ class Blackjack() {
         if(playerSum == dealerSum) return "draw"
         if(playerSum > 21) return "loss"
         if(dealerSum > 21) return "win"
-        if(playerSum > dealerSum) return "win"
-        else return "loss"
+        return if(playerSum > dealerSum) "win"
+        else "loss"
     }
 }
