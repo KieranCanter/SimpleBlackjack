@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        emailInput = findViewById(R.id.input_email)
+        emailInput = findViewById(R.id.enter_email)
 
         var initializer : AdInitializer = AdInitializer()
         MobileAds.initialize(this, initializer)
@@ -49,6 +49,7 @@ class MainActivity : AppCompatActivity() {
 
     fun saveEmail(v : View) {
         email = emailInput.text.toString()
+        Toast.makeText(this, "EMAIL SAVED", Toast.LENGTH_SHORT).show()
     }
 
     fun toFinancial(v : View) {
