@@ -37,6 +37,7 @@
 
     <!--Button to hit (add another card)-->
     <Button
+        android:id="@+id/hit"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -47,6 +48,7 @@
 
     <!--Button to stay (result is end of current round)-->
     <Button
+        android:id="@+id/stay"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -57,6 +59,7 @@
 
     <!--Button to return to main menu-->
     <Button
+        android:id="@+id/mainMenu"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"

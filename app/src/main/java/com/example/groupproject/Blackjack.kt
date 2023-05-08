@@ -1,16 +1,16 @@
 package com.example.groupproject
 
-class Blackjack {
+class Blackjack() {
 
     private var deck : Deck
     private var playerAces : Int = 0
     private var dealerAces : Int = 0
-    private var playerSum : Int = 0
-    private var dealerSum : Int = 0
-    private lateinit var playerHand : ArrayList<Card>
-    private lateinit var dealerHand : ArrayList<Card>
+    var playerSum : Int = 0
+    var dealerSum : Int = 0
+    private var playerHand : ArrayList<Card>
+    private var dealerHand : ArrayList<Card>
 
-    constructor() {
+    init {
         this.deck = Deck()
         this.deck.shuffleDeck()
         this.playerHand = ArrayList<Card>()
@@ -41,7 +41,7 @@ class Blackjack {
     }
 
     fun valueCount(hand: ArrayList<Card>, player: Boolean): Int{
-        var sum = 0;
+        var sum = 0
         for (card in hand) {
             if(card.getValue() == "Ace"){
                 if(player) {playerAces+=1} else {dealerAces += 1}
@@ -49,7 +49,7 @@ class Blackjack {
             }
             sum += toPoint(card.getValue())
         }
-        return sum;
+        return sum
     }
 
     fun toPoint(value: String): Int{
@@ -68,7 +68,8 @@ class Blackjack {
         }
     }
     fun dealerChoice(): Boolean {
-        if(playerSum > 21) return false
+        // Not needed because if playersum is > 21, the game ends and this function never executes
+        //if(playerSum > 21) return false
         //Draw Case
         if( dealerSum > 16 && dealerSum == playerSum) {
             return false
