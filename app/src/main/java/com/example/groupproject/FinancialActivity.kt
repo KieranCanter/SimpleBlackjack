@@ -48,7 +48,23 @@ class FinancialActivity : AppCompatActivity(), AdapterView.OnItemSelectedListene
         currentBalanceTV.text = "Current Balance: \n$" + ((currentBalance * 100.0).roundToInt() / 100.0).toString()
         Log.w("MainActivity", "Current Balance is " + currentBalance)
         Log.w("MainActivity", "Last Transaction Amount Was " + transactionAmount)
+        var emailIntent : Intent = Intent(Intent.ACTION_SEND)
+        emailIntent.setType("text/plain")
+        if (withdrawSelected) {
+            emailIntent.putExtra(Intent.EXTRA_SUBJECT, "RECEIPT FOR WITHDRAWAL")
+        } else {
+            emailIntent.putExtra(Intent.EXTRA_SUBJECT, "RECEIPT FOR DEPOSIT")
+        }
+        var recipient : Array<String> = arrayOf(email)
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, recipient)
+        if (withdrawSelected) {
+            emailIntent.putExtra(Intent.EXTRA_TEXT, "User withdrew $" + transactionAmount)
+        } else {
+            emailIntent.putExtra(Intent.EXTRA_TEXT, "User deposited $" + transactionAmount)
+        }
+        startActivity(Intent.createChooser(emailIntent, "Send receipt"))
     }
+    
     fun performTransaction(v : View) {
         if (transactionAmount <= 0.0) {
             var toast : Toast = Toast.makeText(this, "INPUT AMOUNT", Toast.LENGTH_LONG)
