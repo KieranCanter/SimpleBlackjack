@@ -17,21 +17,21 @@ class GameActivity : AppCompatActivity(), OnClickListener {
         display win or lose
      */
     private val blackjack: Blackjack = Blackjack()
-    private lateinit var btn1: Button
-    private lateinit var btn2: Button
-    private lateinit var btn3: Button
+    private lateinit var btnHit: Button
+    private lateinit var btnStay: Button
+    private lateinit var btnMenu: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
         //Initial start w/ 1 card each
         blackjack.playerHit()
         blackjack.dealerHit()
-        btn1= findViewById(R.id.hit)
-        btn2= findViewById(R.id.stay)
-        btn3= findViewById(R.id.mainMenu)
-        btn1.setOnClickListener(this)
-        btn2.setOnClickListener(this)
-        btn3.setOnClickListener(this)
+        btnHit= findViewById(R.id.hit)
+        btnStay= findViewById(R.id.stay)
+        btnMenu= findViewById(R.id.mainMenu)
+        btnHit.setOnClickListener(this)
+        btnStay.setOnClickListener(this)
+        btnMenu.setOnClickListener(this)
     }
 
     override fun onClick(view: View) {
