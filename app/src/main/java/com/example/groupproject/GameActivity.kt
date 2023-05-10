@@ -41,6 +41,7 @@ class GameActivity : AppCompatActivity(), OnClickListener {
                 if (blackjack.playerSum > 21) {
                     Toast.makeText(this, "YOU LOSE!", Toast.LENGTH_LONG).show()
                     this.finish()
+                    overridePendingTransition(R.anim.slide_from_left, 0)
                 }
                 else {
                     blackjack.playerHit()
@@ -53,18 +54,22 @@ class GameActivity : AppCompatActivity(), OnClickListener {
                 if (blackjack.dealerSum > 21) {
                     Toast.makeText(this, "YOU WIN!", Toast.LENGTH_LONG).show()
                     this.finish()
+                    overridePendingTransition(R.anim.slide_from_left, 0)
                 }
                 else if ( blackjack.dealerSum > 16 && blackjack.dealerSum == blackjack.playerSum) {
                     Toast.makeText(this, "DRAW!!", Toast.LENGTH_LONG).show()
                     this.finish()
+                    overridePendingTransition(R.anim.slide_from_left, 0)
                     }
                 else if (blackjack.dealerSum > blackjack.playerSum) {
                     Toast.makeText(this, "YOU LOSE!", Toast.LENGTH_LONG).show()
                     this.finish()
+                    overridePendingTransition(R.anim.slide_from_left, 0)
                 }
             }
             R.id.mainMenu-> {
                 this.finish()
+                overridePendingTransition(R.anim.slide_from_left, 0)
             }
         }
     }
