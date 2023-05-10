@@ -76,6 +76,7 @@ class MainActivity : AppCompatActivity() {
             var myIntent : Intent = Intent(this, FinancialActivity::class.java)
             myIntent.putExtra("Email", email)
             this.startActivity(myIntent)
+            overridePendingTransition(R.anim.slide_from_right, 0)
         }
     }
 
@@ -89,6 +90,7 @@ class MainActivity : AppCompatActivity() {
             var myIntent : Intent = Intent(this, GameActivity::class.java)
             myIntent.putExtra("Email", email)
             this.startActivity(myIntent)
+            overridePendingTransition(R.anim.slide_from_right, 0)
         }
     }
 
