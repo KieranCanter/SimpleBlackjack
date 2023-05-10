@@ -105,6 +105,7 @@ class FinancialActivity : AppCompatActivity(), AdapterView.OnItemSelectedListene
 
     fun returnToMainMenu(v : View) {
         this.finish()
+        overridePendingTransition(R.anim.slide_from_left, 0)
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
