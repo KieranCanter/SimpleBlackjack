@@ -60,6 +60,7 @@ class GameActivity : AppCompatActivity(), OnClickListener {
                 }
                 blackjack.reset()
                 this.finish()
+                overridePendingTransition(R.anim.slide_from_left, 0)
             }
             R.id.mainMenu-> {
                 this.finish()

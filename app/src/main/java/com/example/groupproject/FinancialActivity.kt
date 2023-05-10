@@ -1,6 +1,8 @@
 package com.example.groupproject
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.icu.text.NumberFormat
 import android.os.Build
 import android.os.Bundle
@@ -25,11 +27,16 @@ class FinancialActivity : AppCompatActivity(), AdapterView.OnItemSelectedListene
     private var currentBalance : Double = 0.0
     private var transactionAmount : Double = 0.0
 
+    private lateinit var prefs : SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_financial)
 
         this.email = intent.extras?.getString("Email")!!
+
+        prefs = this.getSharedPreferences("blackjack_preferences", Context.MODE_PRIVATE)
+        currentBalance = prefs.getFloat("current balance", 0.0f)!!.toDouble()
 
         this.options = findViewById<Spinner>(R.id.options)
         var categories : ArrayList<String> = ArrayList<String>()
@@ -43,10 +50,13 @@ class FinancialActivity : AppCompatActivity(), AdapterView.OnItemSelectedListene
 
         transactionAmountET = findViewById<EditText>(R.id.enter_amount)
         currentBalanceTV = findViewById<TextView>(R.id.current_balance)
+
+        currentBalanceTV.text = "Current Balance: \n$" + ((currentBalance * 100.0).roundToInt() / 100.0).toString()
     }
 
     fun sendReceipt() {
         currentBalanceTV.text = "Current Balance: \n$" + ((currentBalance * 100.0).roundToInt() / 100.0).toString()
+        prefs.edit().putFloat("current balance", currentBalance.toFloat()).apply()
         Log.w("MainActivity", "Current Balance is " + currentBalance)
         Log.w("MainActivity", "Last Transaction Amount Was " + transactionAmount)
         var emailIntent : Intent = Intent(Intent.ACTION_SEND)
