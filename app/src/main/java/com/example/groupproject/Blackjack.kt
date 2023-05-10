@@ -7,16 +7,14 @@ class Blackjack {
     private var dealerAces : Int = 0
     var playerSum : Int = 0
     var dealerSum : Int = 0
-    private var playerHand : ArrayList<Card>
-    private var dealerHand : ArrayList<Card>
+    var playerHand : ArrayList<Card>
+    var dealerHand : ArrayList<Card>
 
     init {
         this.deck = Deck()
         this.deck.shuffleDeck()
         this.playerHand = ArrayList()
         this.dealerHand = ArrayList()
-        dealerHit()
-        playerHit()
     }
 
     fun playerHit(){
@@ -47,7 +45,7 @@ class Blackjack {
                 if(player) {playerAces+=1} else {dealerAces += 1}
                 sum += 11
             }
-            sum += toPoint(card.getValue())
+            else sum += toPoint(card.getValue())
         }
         return sum
     }
@@ -71,8 +69,6 @@ class Blackjack {
     //Return false = Dealer will stop playing
     //Return true = Dealer wants to keep playing
     fun dealerChoice(): Boolean {
-        // Not needed because if playersum is > 21, the game ends and this function never executes
-        //if(playerSum > 21) return false
         //Draw Case
         if( dealerSum > 16 && dealerSum == playerSum) {
             return false
@@ -82,7 +78,7 @@ class Blackjack {
             dealerHit()
             return true
         }
-        return false
+        else return false
     }
 
     fun didPlayerWin(): String {
@@ -91,5 +87,16 @@ class Blackjack {
         if(dealerSum > 21) return "win"
         return if(playerSum > dealerSum) "win"
         else "loss"
+    }
+
+    fun reset() {
+        deck = Deck()
+        deck.shuffleDeck()
+        playerAces = 0
+        dealerAces = 0
+        playerSum = 0
+        dealerSum = 0
+        playerHand = ArrayList()
+        dealerHand = ArrayList()
     }
 }

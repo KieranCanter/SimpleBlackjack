@@ -8,6 +8,7 @@
 
     <!--Shows dealer's hand-->
     <TextView
+        android:id="@+id/dealerHand"
         android:layout_width="match_parent"
         android:layout_height="0sp"
         android:layout_weight="1"
@@ -18,6 +19,7 @@
 
     <!--Shows user's hand-->
     <TextView
+        android:id="@+id/userHand"
         android:layout_width="match_parent"
         android:layout_height="0sp"
         android:layout_weight="1"
