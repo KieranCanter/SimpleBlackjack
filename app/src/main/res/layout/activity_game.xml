@@ -9,8 +9,10 @@
 
     <!--Shows dealer's hand-->
     <TextView
+        android:id="@+id/dealerHand"
         android:layout_width="300sp"
         android:layout_height="125sp"
+        android:layout_weight="1"
         android:textSize="20sp"
         android:text="Dealer Hand: "
         android:textColor="@color/light_grey"
@@ -20,8 +22,10 @@
 
     <!--Shows user's hand-->
     <TextView
+        android:id="@+id/userHand"
         android:layout_width="300sp"
         android:layout_height="125sp"
+        android:layout_weight="1"
         android:textSize="20sp"
         android:text="Your Hand: "
         android:textColor="@color/light_grey"
