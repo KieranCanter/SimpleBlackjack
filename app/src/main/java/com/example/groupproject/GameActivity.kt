@@ -1,6 +1,8 @@
 package com.example.groupproject
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.view.View.OnClickListener
@@ -8,6 +10,10 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class GameActivity : AppCompatActivity(), OnClickListener {
     private val blackjack: Blackjack = Blackjack()
@@ -47,7 +53,8 @@ class GameActivity : AppCompatActivity(), OnClickListener {
                 }
             }
             R.id.stay -> {
-                while(blackjack.dealerChoice()) {
+                while (blackjack.dealerChoice()) {
+                    blackjack.dealerHit()
                     updateDealerHand()
                 }
                 when (blackjack.didPlayerWin()) {
@@ -58,9 +65,11 @@ class GameActivity : AppCompatActivity(), OnClickListener {
                         Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG).show()
                     }
                 }
-                blackjack.reset()
-                this.finish()
-                overridePendingTransition(R.anim.slide_from_left, 0)
+                Handler(Looper.getMainLooper()).postDelayed({
+                    blackjack.reset()
+                    this.finish()
+                    overridePendingTransition(R.anim.slide_from_left, 0)
+                }, 3000)
             }
             R.id.mainMenu-> {
                 this.finish()
