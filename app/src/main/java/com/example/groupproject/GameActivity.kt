@@ -68,7 +68,8 @@ class GameActivity : AppCompatActivity(), OnClickListener {
                 blackjack.playerHit()
                 updatePlayerHand()
                 if (blackjack.playerSum > 21) {
-                    //@TODO @KAI subtract to balance
+                    var currentBalance : Double = prefs.getFloat("current balance", 0.0f)!!.toDouble()
+                    prefs.edit().putFloat("current balance", (currentBalance - betAmount.text.toString().toDouble()).toFloat()).apply()
                     Toast.makeText(this, "YOU LOSE!", Toast.LENGTH_LONG).show()
                     blackjack.reset()
                     this.finish()
@@ -82,12 +83,14 @@ class GameActivity : AppCompatActivity(), OnClickListener {
                 }
                 when (blackjack.didPlayerWin()) {
                     "win" -> {
-                        //@TODO @KAI add to balance
+                        var currentBalance : Double = prefs.getFloat("current balance", 0.0f)!!.toDouble()
+                        prefs.edit().putFloat("current balance", (currentBalance + betAmount.text.toString().toDouble()).toFloat()).apply()
                         Toast.makeText(this, "YOU WIN!", Toast.LENGTH_LONG).show()
                     }
                     "draw" -> Toast.makeText(this, "DRAW!!", Toast.LENGTH_LONG).show()
                     "loss" -> {
-                        //@TODO @KAI subtract from balance
+                        var currentBalance : Double = prefs.getFloat("current balance", 0.0f)!!.toDouble()
+                        prefs.edit().putFloat("current balance", (currentBalance - betAmount.text.toString().toDouble()).toFloat()).apply()
                         Toast.makeText(this, "YOU LOSE!", Toast.LENGTH_LONG).show()
                     }
                     else -> {

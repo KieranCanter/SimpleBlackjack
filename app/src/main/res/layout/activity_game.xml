@@ -50,7 +50,7 @@
             android:backgroundTint="@color/light_grey"
             android:gravity="center|bottom"
             android:hint="Input Bet:"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:textColor="@color/light_grey"
             android:textColorHint="@color/light_grey"
             android:textSize="20sp" />
