@@ -3,17 +3,12 @@ package com.example.groupproject
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.View
 import android.view.View.OnClickListener
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 class GameActivity : AppCompatActivity(), OnClickListener {
     private val blackjack: Blackjack = Blackjack()
@@ -82,13 +77,13 @@ class GameActivity : AppCompatActivity(), OnClickListener {
         for (card in blackjack.dealerHand) {
             printDealerHand = printDealerHand + card.getValue() + " | "
         }
-        dealerHand.setText(printDealerHand + "     " + blackjack.dealerSum.toString())
+        dealerHand.text = printDealerHand + "     " + blackjack.dealerSum.toString()
     }
     private fun updatePlayerHand() {
         var printUserHand = "| "
         for (card in blackjack.playerHand) {
             printUserHand = printUserHand + card.getValue() + " | "
         }
-        userHand.setText(printUserHand + "     " + blackjack.playerSum.toString())
+        userHand.text = printUserHand + "     " + blackjack.playerSum.toString()
     }
 }

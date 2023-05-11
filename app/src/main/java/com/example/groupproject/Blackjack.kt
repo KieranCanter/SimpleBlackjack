@@ -1,9 +1,5 @@
 package com.example.groupproject
 
-import android.os.Handler
-import android.os.Looper
-import android.util.Log
-
 class Blackjack {
 
     private var deck : Deck
