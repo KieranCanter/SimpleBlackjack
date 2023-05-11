@@ -4,12 +4,10 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.icu.text.NumberFormat
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.*
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import java.util.*
 import kotlin.math.roundToInt
@@ -24,7 +22,10 @@ class FinancialActivity : AppCompatActivity(), AdapterView.OnItemSelectedListene
     private lateinit var transactionAmountET : EditText
     private lateinit var currentBalanceTV : TextView
 
-    private var currentBalance : Double = 0.0
+    companion object {
+        var currentBalance : Double = 0.0
+        //ateinit var prefs : SharedPreferences
+    }
     private var transactionAmount : Double = 0.0
 
     private lateinit var prefs : SharedPreferences
