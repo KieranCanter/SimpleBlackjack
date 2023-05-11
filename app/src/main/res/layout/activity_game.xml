@@ -33,24 +33,42 @@
         android:layout_gravity="center"
         />
 
-    <!--User inputs amount to bet on current hand-->
-    <EditText
-        android:layout_width="150sp"
-        android:layout_height="50sp"
-        android:textSize="20sp"
-        android:hint="Input Bet:"
-        android:textColorHint="@color/light_grey"
-        android:backgroundTint="@color/light_grey"
-        android:textColor="@color/light_grey"
-        android:gravity="center|bottom"
-        android:inputType="number"
-        android:autofillHints=""
-        android:layout_gravity="center"
-        android:layout_marginBottom="75sp"
-        android:layout_marginTop="25sp"
-        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150sp"
+        android:orientation="horizontal"
+        android:gravity="center">
 
-    <!--Button to hit (add another card)-->
+        <!--User inputs amount to bet on current hand-->
+        <EditText
+            android:id="@+id/betAmount"
+            android:layout_width="150sp"
+            android:layout_height="50sp"
+            android:layout_gravity="start"
+            android:layout_marginEnd="5sp"
+            android:autofillHints=""
+            android:backgroundTint="@color/light_grey"
+            android:gravity="center|bottom"
+            android:hint="Input Bet:"
+            android:inputType="number"
+            android:textColor="@color/light_grey"
+            android:textColorHint="@color/light_grey"
+            android:textSize="20sp" />
+
+        <!--User confirms bet amount-->
+        <Button
+            android:id="@+id/betConfirm"
+            android:layout_width="150sp"
+            android:layout_height="50sp"
+            android:layout_gravity="end"
+            android:layout_marginStart="5sp"
+            android:backgroundTint="@color/red_400"
+            android:text="CONFIRM AMOUNT"
+            android:textColor="@color/dark_grey"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="300sp"
         android:layout_height="100sp"
@@ -58,6 +76,7 @@
         android:gravity="center"
         >
 
+        <!--Button to hit (add another card)-->
         <Button
             android:id="@+id/hit"
             android:layout_width="140sp"

@@ -6,6 +6,7 @@ import android.os.Looper
 import android.view.View
 import android.view.View.OnClickListener
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -17,12 +18,15 @@ class GameActivity : AppCompatActivity(), OnClickListener {
     private lateinit var btn1: Button
     private lateinit var btn2: Button
     private lateinit var btn3: Button
+    private lateinit var btn4: Button
+    private lateinit var betAmount : EditText
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
         //Initial start w/ 1 card each
         blackjack.playerHit()
         blackjack.dealerHit()
+        betAmount = findViewById(R.id.betAmount)
         dealerHand = findViewById(R.id.dealerHand)
         userHand = findViewById(R.id.userHand)
         updateDealerHand()
@@ -30,13 +34,19 @@ class GameActivity : AppCompatActivity(), OnClickListener {
         btn1= findViewById(R.id.hit)
         btn2= findViewById(R.id.stay)
         btn3= findViewById(R.id.mainMenu)
+        btn4 = findViewById(R.id.betConfirm)
         btn1.setOnClickListener(this)
         btn2.setOnClickListener(this)
         btn3.setOnClickListener(this)
+        btn4.setOnClickListener(this)
     }
 
     override fun onClick(view: View) {
         when (view.id) {
+            //code for financialActivity<->gameActivity
+            R.id.betConfirm -> {
+                Toast.makeText(this, "You placed a $" + betAmount.text + " bet", Toast.LENGTH_LONG).show()
+            }
             R.id.hit -> {
                 blackjack.playerHit()
                 updatePlayerHand()
