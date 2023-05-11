@@ -9,6 +9,7 @@ class Blackjack {
     var dealerSum : Int = 0
     var playerHand : ArrayList<Card>
     var dealerHand : ArrayList<Card>
+    var betConfirmed : Boolean = false
 
     init {
         this.deck = Deck()
@@ -95,5 +96,6 @@ class Blackjack {
         dealerSum = 0
         playerHand = ArrayList()
         dealerHand = ArrayList()
+        betConfirmed = false
     }
 }

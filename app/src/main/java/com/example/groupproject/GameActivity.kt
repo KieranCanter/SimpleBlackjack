@@ -23,22 +23,15 @@ class GameActivity : AppCompatActivity(), OnClickListener {
     private lateinit var btn4: Button
     private lateinit var betAmount : EditText
     private lateinit var prefs : SharedPreferences
+    private var currentBet: Float = 0.0F
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
         prefs = this.getSharedPreferences("blackjack_preferences", Context.MODE_PRIVATE)
-
-        //Initial start w/ 1 card each
-        blackjack.playerHit()
-        blackjack.dealerHit()
-
         betAmount = findViewById(R.id.betAmount)
         dealerHand = findViewById(R.id.dealerHand)
         userHand = findViewById(R.id.userHand)
-        updateDealerHand()
-        updatePlayerHand()
-
         btn1= findViewById(R.id.hit)
         btn2= findViewById(R.id.stay)
         btn3= findViewById(R.id.mainMenu)
@@ -53,23 +46,35 @@ class GameActivity : AppCompatActivity(), OnClickListener {
         when (view.id) {
             //code for financialActivity<->gameActivity. bet is saved
             R.id.betConfirm -> {
-                if (betAmount.text.toString() == "") {
+                if(blackjack.betConfirmed){
+                    Toast.makeText(this, "You already made a bet", Toast.LENGTH_LONG).show()
+                }
+                else if (betAmount.text.toString() == "") {
                     Toast.makeText(this, "No bet amount was entered", Toast.LENGTH_LONG).show()
                 }
                 else if (betAmount.text.toString().toDouble() > prefs.getFloat("current balance", 0.0f).toDouble()) {
                     Toast.makeText(this, "INSUFFICIENT FUNDS", Toast.LENGTH_LONG).show()
                 }
                 else {
-                    prefs.edit().putFloat("current bet", betAmount.text.toString().toFloat()).apply()
+                    currentBet = betAmount.text.toString().toFloat()
+                    prefs.edit().putFloat("current bet", currentBet).apply()
                     Toast.makeText(this, "You placed a $" + betAmount.text + " bet", Toast.LENGTH_LONG).show()
+                    //Initial start w/ 1 card each
+                    blackjack.reset()
+                    blackjack.betConfirmed = true
+                    blackjack.playerHit()
+                    blackjack.dealerHit()
+                    updateDealerHand()
+                    updatePlayerHand()
                 }
             }
             R.id.hit -> {
+                blackjack.betConfirmed = true
                 blackjack.playerHit()
                 updatePlayerHand()
                 if (blackjack.playerSum > 21) {
                     var currentBalance : Double = prefs.getFloat("current balance", 0.0f)!!.toDouble()
-                    prefs.edit().putFloat("current balance", (currentBalance - betAmount.text.toString().toDouble()).toFloat()).apply()
+                    prefs.edit().putFloat("current balance", (currentBalance - currentBet).toFloat()).apply()
                     Toast.makeText(this, "YOU LOSE!", Toast.LENGTH_LONG).show()
                     blackjack.reset()
                     this.finish()
@@ -84,13 +89,13 @@ class GameActivity : AppCompatActivity(), OnClickListener {
                 when (blackjack.didPlayerWin()) {
                     "win" -> {
                         var currentBalance : Double = prefs.getFloat("current balance", 0.0f)!!.toDouble()
-                        prefs.edit().putFloat("current balance", (currentBalance + betAmount.text.toString().toDouble()).toFloat()).apply()
+                        prefs.edit().putFloat("current balance", (currentBalance + currentBet).toFloat()).apply()
                         Toast.makeText(this, "YOU WIN!", Toast.LENGTH_LONG).show()
                     }
                     "draw" -> Toast.makeText(this, "DRAW!!", Toast.LENGTH_LONG).show()
                     "loss" -> {
                         var currentBalance : Double = prefs.getFloat("current balance", 0.0f)!!.toDouble()
-                        prefs.edit().putFloat("current balance", (currentBalance - betAmount.text.toString().toDouble()).toFloat()).apply()
+                        prefs.edit().putFloat("current balance", (currentBalance - currentBet).toFloat()).apply()
                         Toast.makeText(this, "YOU LOSE!", Toast.LENGTH_LONG).show()
                     }
                     else -> {
