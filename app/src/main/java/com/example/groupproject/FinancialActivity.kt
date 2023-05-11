@@ -22,10 +22,7 @@ class FinancialActivity : AppCompatActivity(), AdapterView.OnItemSelectedListene
     private lateinit var transactionAmountET : EditText
     private lateinit var currentBalanceTV : TextView
 
-    companion object {
-        var currentBalance : Double = 0.0
-        //ateinit var prefs : SharedPreferences
-    }
+    var currentBalance : Double = 0.0
     private var transactionAmount : Double = 0.0
 
     private lateinit var prefs : SharedPreferences
