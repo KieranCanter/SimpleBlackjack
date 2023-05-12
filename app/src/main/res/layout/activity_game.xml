@@ -35,14 +35,14 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150sp"
+        android:layout_height="100sp"
         android:orientation="horizontal"
         android:gravity="center">
 
         <!--User inputs amount to bet on current hand-->
         <EditText
             android:id="@+id/betAmount"
-            android:layout_width="150sp"
+            android:layout_width="145sp"
             android:layout_height="50sp"
             android:layout_gravity="start"
             android:layout_marginEnd="5sp"
@@ -58,7 +58,7 @@
         <!--User confirms bet amount-->
         <Button
             android:id="@+id/betConfirm"
-            android:layout_width="150sp"
+            android:layout_width="145sp"
             android:layout_height="50sp"
             android:layout_gravity="end"
             android:layout_marginStart="5sp"
@@ -124,6 +124,7 @@
         android:textStyle="bold"
         android:layout_gravity="center"
         android:layout_marginTop="10sp"
+        android:layout_marginBottom="75sp"
         />
 
 </LinearLayout>

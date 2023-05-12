@@ -25,7 +25,7 @@
 
             <EditText
                 android:layout_height="100sp"
-                android:layout_width="150sp"
+                android:layout_width="145sp"
                 android:hint="Enter Amount"
                 android:textSize="20sp"
                 android:id="@+id/enter_amount"
@@ -39,7 +39,7 @@
 
             <Button
                 android:layout_height="100sp"
-                android:layout_width="150sp"
+                android:layout_width="145sp"
                 android:text="CONFIRM AMOUNT"
                 android:backgroundTint="@color/red_400"
                 android:textColor="@color/dark_grey"

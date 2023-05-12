@@ -69,16 +69,20 @@ class GameActivity : AppCompatActivity(), OnClickListener {
                 }
             }
             R.id.hit -> {
-                blackjack.betConfirmed = true
-                blackjack.playerHit()
-                updatePlayerHand()
-                if (blackjack.playerSum > 21) {
-                    var currentBalance : Double = prefs.getFloat("current balance", 0.0f)!!.toDouble()
-                    prefs.edit().putFloat("current balance", (currentBalance - currentBet).toFloat()).apply()
-                    Toast.makeText(this, "YOU LOSE!", Toast.LENGTH_LONG).show()
-                    blackjack.reset()
-                    this.finish()
-                    overridePendingTransition(R.anim.slide_from_left, 0)
+                if (!blackjack.betConfirmed) {
+                    Toast.makeText(this, "Please confirm a bet amount", Toast.LENGTH_LONG).show()
+                } else {
+                    blackjack.betConfirmed = true
+                    blackjack.playerHit()
+                    updatePlayerHand()
+                    if (blackjack.playerSum > 21) {
+                        var currentBalance : Double = prefs.getFloat("current balance", 0.0f)!!.toDouble()
+                        prefs.edit().putFloat("current balance", (currentBalance - currentBet).toFloat()).apply()
+                        Toast.makeText(this, "YOU LOSE!", Toast.LENGTH_LONG).show()
+                        blackjack.reset()
+                        this.finish()
+                        overridePendingTransition(R.anim.slide_from_left, 0)
+                    }
                 }
             }
             R.id.stay -> {
